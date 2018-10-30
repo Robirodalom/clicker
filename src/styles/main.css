@@ -1,0 +1,55 @@
+body {
+    color: white;
+}
+
+.split {
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left {
+    left: 0;
+    background-color: #111;
+    width: 30%;
+}
+
+.coockie{
+margin-top: 40%;
+}
+
+.mainCoockie{
+  background-image: ulr('img\coockieTmp.png')
+  position: absolute;
+  width: 50%;
+  height: 35%;
+  left: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.middle{
+  width: 35%;
+  left: 30%;
+  background-color: green;
+}
+
+.right {
+    left: 65%;
+    background-color: red;
+    width: 35%;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.centered img {
+    width: 150px;
+    border-radius: 50%;
+}
