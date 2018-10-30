@@ -22,9 +22,10 @@
   <div id="vue-app">
     <div class="split left">
       <div class="upperSize">
-          <div class="coockie">
-              <div class="currentAmount"> {{ actualCoockies }}  </div>
-              <input type="button" value="" class="mainCoockie">
+          <div class="cookie">
+              <div class="currentAmount"> {{ actualCookies }}  </div>
+              <div class="buildingCookie"> {{ buildingCookie }}  </div>
+              <input type="button" id="mainCookieId" class="mainCookie" v-on:click="clickMainCookie">
           </div>
       </div>
     </div>
@@ -36,7 +37,7 @@
     <div class="split right">
     <p>This is right</p>
     </div>
-  </div>  
+  </div>
 
     <script src="components\app.js"></script>
 </body>
