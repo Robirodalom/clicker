@@ -36,11 +36,8 @@
 
     <div class="split right">
       <div class=buildings>
-          <ul>
-              <li v-for="building in buildingsInfo">
-                <input type="button" value='building.name' class="buildingButton">
-               </li>
-          </ul>
+                <input type="button" v-for="building in buildingsInfo" v-bind:value="building.name" class="buildingButton"><br>
+            </div>
       </div>
     </div>
   </div>
