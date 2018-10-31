@@ -1,5 +1,6 @@
-body {
-    color: white;
+@font-face {
+    font-family: myFont;
+    src: url('/fonts/PlayfairDisplay-Bold.ttf');
 }
 
 .split {
@@ -10,51 +11,57 @@ body {
     padding-top: 20px;
 }
 
-.left {
-    left: 0;
-    background-image: url('/img/bgLeftBackground.jpg');
-    width: 30%;
-}
-
 .upperSize{
 
 }
-
 .cookie{
 
 }
-
 .currentAmount{
+  font-family: myFont;
   text-align: center;
   margin-top: 80px;
-  font-size: 24px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #00632b;
 }
 
 .buildingCookie{
+  font-family: myFont;
   text-align: center;
   margin-top: 15px;
-  font-size: 18px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #00632b;
 }
 
 .mainCookie{
   background-image: url('/img/cookie.png');
   position: absolute;
   margin:auto;
-  margin-left: 176px;
+  margin-left: 25%;
   margin-top: 20px;
   height: 225px;
   width: 225px;
 }
 
+.left {
+    left: 0;
+    background-color: white;
+    width: 30%;
+}
+
 .middle{
   width: 35%;
   left: 30%;
-  background-color: green;
+  background-color: white;
+  border-left: 1px solid black;
 }
 
 .right {
     left: 65%;
-    background-color: red;
+    background-color: white;
+    border-left: 1px solid black;
     width: 35%;
 }
 .centered {
