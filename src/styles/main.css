@@ -17,33 +17,6 @@
 .cookie{
 
 }
-.currentAmount{
-  font-family: myFont;
-  text-align: center;
-  margin-top: 80px;
-  font-size: 36px;
-  font-weight: bold;
-  color: #00632b;
-}
-
-.buildingCookie{
-  font-family: myFont;
-  text-align: center;
-  margin-top: 15px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #00632b;
-}
-
-.mainCookie{
-  background-image: url('/img/cookie.png');
-  position: absolute;
-  margin:auto;
-  margin-left: 25%;
-  margin-top: 20px;
-  height: 225px;
-  width: 225px;
-}
 
 .left {
     left: 0;
@@ -65,14 +38,7 @@
     width: 35%;
 }
 
-.buildingButton{
-display: flex;
-justify-content: center;
-flex-direction: column;
-width: 100%;
-height: 10%;
-margin-bottom:10px;
-}
+
 
 .centered {
     position: absolute;
