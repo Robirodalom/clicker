@@ -1,0 +1,31 @@
+#Henagon{
+  background-color: hsl(36, 100%, 60%);
+}
+
+#Diagon{
+  background-color: hsl(36, 100%, 40%);
+}
+
+#Triangle{
+  background-color: hsl(60, 100%, 60%);
+}
+
+#Quadrilateral{
+  background-color: hsl(60, 100%, 40%);
+}
+
+#Pentagon{
+  background-color: hsl(105, 100%, 65%);
+}
+
+#Hexagon{
+  background-color: hsl(105, 100%, 30%);
+}
+
+#Heptagon{
+  background-color: hsl(210, 100%, 70%);
+}
+
+#Octagon{
+  background-color: hsl(210, 100%, 30%);
+}
