@@ -4,18 +4,17 @@
     <meta charset="utf-8">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Klikkelős játék</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles\main.css">
-    <link rel="stylesheet" type="text/css" hreft="styles\navbar.css">
+    <link rel="stylesheet" type="text/css" href="styles\navbar.css">
+    <link rel="stylesheet" type="text/css" href="styles\buttons.css">
+    <link rel="stylesheet" type="text/css" href="styles\leftSide.css">
+    <link rel="stylesheet" type="text/css" href="styles\middleSide.css">
+    <link rel="stylesheet" type="text/css" href="styles\rigthSide.css">
 
-<!--
     <div class="topnav">
-     <a class="active" href="#home">Home</a>
-     <a href="#news">News</a>
-     <a href="#contact">Contact</a>
-     <a href="#about">About</a>
+     <a class="active" href="/">Kezdőlap</a>
+     <a href="/">Mentés</a>
    </div>
- -->
 
 </head>
 <body>
@@ -31,13 +30,15 @@
     </div>
 
     <div class="split middle">
-
+      <div class="statistics">
+        <p v-for="buildingAmmount in buildingsInfo" >{{buildingAmmount.name}} - {{buildingAmmount.ammount}}</p>
+      </div>
     </div>
 
     <div class="split right">
-      <div class=buildings>
-                <input type="button" v-for="building in buildingsInfo" v-bind:value="building.name" class="buildingButton">
-            </div>
+        <div class=buildings>
+                  <input type="button" v-for="building in buildingsInfo" v-bind:value="building.cost" class="buildingButton" v-bind:id="building.name" v-on:click="buyBuilding(building.name)">
+        </div>
       </div>
     </div>
   </div>
