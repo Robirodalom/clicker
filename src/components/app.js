@@ -6,11 +6,12 @@ data: {
   clickCookie: 1,
   buildingCookie: 0,
   bonusPercent: 1.0,
+  buildingNum: 8,
   buildingsInfo: [
-    {name: 'Henagon', ammount: 0, cost: 10, baseEarn: 0.1, upgrades: 0}, {name: 'Diagon', ammount: 0, cost: 105, baseEarn: 1, upgrades: 0},
-    {name: 'Triangle', ammount: 0, cost: 1100, baseEarn: 11, upgrades: 0}, {name: 'Quadrilateral', ammount: 0, cost: 11500, baseEarn: 120, upgrades: 0},
-    {name: 'Pentagon', ammount: 0, cost: 121000, baseEarn: 1300, upgrades: 0}, {name: 'Hexagon', ammount: 0,cost: 1270000, baseEarn: 12500, upgrades: 0},
-    {name: 'Heptagon', ammount: 0, cost: 13335000, baseEarn: 140000, upgrades: 0}, {name: 'Octagon', ammount: 0, cost: 140000000, baseEarn: 14000000, upgrades: 0}
+    {name: 'Henagon', ammount: 0, cost: 10, baseEarn: 0.1, upgrades: 0, id: 'gray'}, {name: 'Diagon', ammount: 0, cost: 105, baseEarn: 1, upgrades: 0, id: 'gray'},
+    {name: 'Triangle', ammount: 0, cost: 1100, baseEarn: 11, upgrades: 0, id: 'gray'}, {name: 'Quadrilateral', ammount: 0, cost: 11500, baseEarn: 120, upgrades: 0, id: 'gray'},
+    {name: 'Pentagon', ammount: 0, cost: 121000, baseEarn: 1300, upgrades: 0, id:'gray'}, {name: 'Hexagon', ammount: 0,cost: 1270000, baseEarn: 12500, upgrades: 0, id: 'gray'},
+    {name: 'Heptagon', ammount: 0, cost: 13335000, baseEarn: 140000, upgrades: 0, id:'gray'}, {name: 'Octagon', ammount: 0, cost: 140000000, baseEarn: 14000000, upgrades: 0, id: 'gray'}
   ],
   statisticInfo: [
     'Cookies backed all-time:', 'Cookies clicked all-time:', 'Handmade cookies:', 'Buildings owned:'
@@ -28,6 +29,12 @@ mounted: function () {
           window.setInterval(() => {
             this.addEarnings();
           },1000);
+        }),
+
+        this.$nextTick(function(){
+          window.setInterval(() => {
+            this.checkBuildingToAfford();
+          }, 200);
         })
   },
 
@@ -38,7 +45,7 @@ methods: {
   },
   buyBuilding: function(tmpName){
     var i;
-    for(i = 0; i < 8; i++){
+    for(i = 0; i < this.buildingNum; i++){
 
     if(tmpName == this.buildingsInfo[i].name){
       if(this.buildingsInfo[i].cost <= this.actualCookies){
@@ -55,7 +62,7 @@ methods: {
   updateEarning: function(){
     this.buildingCookie = 0;
     var i;
-    for(i = 0; i < 8; i++){
+    for(i = 0; i < this.buildingNum; i++){
       this.buildingCookie += parseFloat( (this.buildingsInfo[i].baseEarn * this.buildingsInfo[i].ammount * (this.buildingsInfo[i].upgrades + 1) * this.bonusPercent).toFixed(1));
     }
   },
@@ -66,6 +73,18 @@ methods: {
 
     this.actualCookies = parseFloat(this.actualCookies.toFixed(2));
     this.sumCookies = parseFloat(this.sumCookies.toFixed(2));
+  },
+  checkBuildingToAfford: function(){
+    var i;
+    for(i = 0; i < this.buildingNum; i++){
+      if(this.buildingsInfo[i].cost > this.actualCookies){
+        this.buildingsInfo[i].id = "gray";
+      }
+      else {
+        this.buildingsInfo[i].id = this.buildingsInfo[i].name;
+      }
+    }
+
   }
 }
 
