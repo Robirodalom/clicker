@@ -12,8 +12,8 @@
     <link rel="stylesheet" type="text/css" href="styles\rigthSide.css">
 
     <div class="topnav">
-     <a class="active" href="/">Kezdőlap</a>
-     <a href="/">Mentés</a>
+     <a class="active" href="#">Kezdőlap</a>
+     <a href="#">Mentés</a>
    </div>
 
 </head>
@@ -37,13 +37,14 @@
 
     <div class="split right">
         <div class=buildings>
-                  <input type="button" v-for="building in buildingsInfo" v-bind:value="building.cost" class="buildingButton" v-bind:id="building.name" v-on:click="buyBuilding(building.name)">
+                  <input type="button" v-for="building in buildingsInfo" v-bind:value="building.cost" class="buildingButton"  v-bind:id="building.id" v-on:click="buyBuilding(building.name)">
         </div>
       </div>
     </div>
   </div>
 
     <script src="components\app.js"></script>
+    <scritp scr="components\save.js"></scritp>
 </body>
 
 </html>
