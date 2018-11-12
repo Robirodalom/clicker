@@ -8,14 +8,21 @@ data: {
   bonusPercent: 1.0,
   buildingNum: 8,
   buildingsInfo: [
-    {name: 'Henagon', ammount: 0, cost: 10, baseEarn: 0.1, upgrades: 0, id: 'gray'}, {name: 'Diagon', ammount: 0, cost: 105, baseEarn: 1, upgrades: 0, id: 'gray'},
-    {name: 'Triangle', ammount: 0, cost: 1100, baseEarn: 11, upgrades: 0, id: 'gray'}, {name: 'Quadrilateral', ammount: 0, cost: 11500, baseEarn: 120, upgrades: 0, id: 'gray'},
-    {name: 'Pentagon', ammount: 0, cost: 121000, baseEarn: 1300, upgrades: 0, id:'gray'}, {name: 'Hexagon', ammount: 0,cost: 1270000, baseEarn: 12500, upgrades: 0, id: 'gray'},
-    {name: 'Heptagon', ammount: 0, cost: 13335000, baseEarn: 140000, upgrades: 0, id:'gray'}, {name: 'Octagon', ammount: 0, cost: 140000000, baseEarn: 14000000, upgrades: 0, id: 'gray'}
+    {name: 'Henagon', ammount: 0, cost: 10, baseEarn: 0.1, id: 'gray'}, {name: 'Diagon', ammount: 0, cost: 105, baseEarn: 1,id: 'gray'},
+    {name: 'Triangle', ammount: 0, cost: 1100, baseEarn: 11, id: 'gray'}, {name: 'Quadrilateral', ammount: 0, cost: 11500, baseEarn: 120, id: 'gray'},
+    {name: 'Pentagon', ammount: 0, cost: 121000, baseEarn: 1300, id:'gray'}, {name: 'Hexagon', ammount: 0,cost: 1270000, baseEarn: 12500,  id: 'gray'},
+    {name: 'Heptagon', ammount: 0, cost: 13335000, baseEarn: 140000, id:'gray'}, {name: 'Octagon', ammount: 0, cost: 140000000, baseEarn: 14000000,  id: 'gray'}
   ],
   statisticInfo: [
     'Cookies backed all-time:', 'Cookies clicked all-time:', 'Handmade cookies:', 'Buildings owned:'
-    ]
+  ],
+
+  upgradeInfo: [
+    {name: 'Henagon', ammount: 0, cost: 100, id: 'gray'}, {name: 'Diagon', ammount: 0, cost: 1050, id: 'gray'},
+    {name: 'Triangle', ammount: 0, cost: 11000,  id: 'gray'}, {name: 'Quadrilateral', ammount: 0, cost: 115000,   id: 'gray'},
+    {name: 'Pentagon', ammount: 0, cost: 1210000,   id:'gray'}, {name: 'Hexagon', ammount: 0,cost: 12700000,  id: 'gray'},
+    {name: 'Heptagon', ammount: 0, cost: 133350000,  id:'gray'}, {name: 'Octagon', ammount: 0, cost: 1400000000,  id: 'gray'}
+  ]
 },
 
 mounted: function () {
@@ -34,6 +41,7 @@ mounted: function () {
         this.$nextTick(function(){
           window.setInterval(() => {
             this.checkBuildingToAfford();
+            this.checkUpgradesToAfford();
           }, 200);
         })
   },
@@ -59,11 +67,26 @@ methods: {
 
   },
 
+  buyUpgrade: function(tmpName){
+    var i;
+    for(i = 0; i < this.buildingNum; i++){
+
+    if(tmpName == this.upgradeInfo[i].name){
+      if(this.upgradeInfo[i].cost <= this.actualCookies){
+        this.actualCookies -= this.upgradeInfo[i].cost;
+        this.upgradeInfo[i].ammount++;
+        this.upgradeInfo[i].cost*= 9;
+        this.upgradeInfo[i].cost = parseFloat(this.upgradeInfo[i].cost.toFixed(0));
+      }
+    }
+  }
+},
+
   updateEarning: function(){
     this.buildingCookie = 0;
     var i;
     for(i = 0; i < this.buildingNum; i++){
-      this.buildingCookie += parseFloat( (this.buildingsInfo[i].baseEarn * this.buildingsInfo[i].ammount * (this.buildingsInfo[i].upgrades + 1) * this.bonusPercent).toFixed(1));
+      this.buildingCookie += parseFloat( (this.buildingsInfo[i].baseEarn * this.buildingsInfo[i].ammount * Math.pow(2, this.upgradeInfo[i].ammount) * this.bonusPercent).toFixed(1));
     }
   },
 
@@ -85,7 +108,20 @@ methods: {
       }
     }
 
+  },
+
+  checkUpgradesToAfford: function(){
+    var i;
+    for(i = 0; i < this.buildingNum; i++){
+      if(this.upgradeInfo[i].cost > this.actualCookies){
+        this.upgradeInfo[i].id = "gray";
+      }
+      else {
+        this.upgradeInfo[i].id = this.upgradeInfo[i].name;
+      }
+    }
   }
+
 }
 
 
