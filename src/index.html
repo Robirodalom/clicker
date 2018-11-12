@@ -30,14 +30,21 @@
     </div>
 
     <div class="split middle">
-      <div class="statistics">
-        <p v-for="buildingAmmount in buildingsInfo" >{{buildingAmmount.name}} - {{buildingAmmount.ammount}}</p>
+      <div class="middleUp">
+        <div class="statistics">
+          <p v-for="buildingAmmount in buildingsInfo" >{{buildingAmmount.name}} - {{buildingAmmount.ammount}}</p>
+        </div>
+      </div>
+      <div class="middleDown">
+          <div class="upgrades">
+            <button v-for="upgrade in upgradeInfo" class="upgradeButton" v-bind:id="upgrade.id" v-on:click="buyUpgrade(upgrade.name)">{{upgrade.cost}}</button>
+          </div>
       </div>
     </div>
 
     <div class="split right">
         <div class=buildings>
-                  <input type="button" v-for="building in buildingsInfo" v-bind:value="building.cost" class="buildingButton"  v-bind:id="building.id" v-on:click="buyBuilding(building.name)">
+            <input type="button" v-for="building in buildingsInfo" v-bind:value="building.cost" class="buildingButton"  v-bind:id="building.id" v-on:click="buyBuilding(building.name)">
         </div>
       </div>
     </div>
