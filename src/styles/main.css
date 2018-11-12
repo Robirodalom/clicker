@@ -2,7 +2,6 @@
     font-family: myFont;
     src: url('/fonts/PlayfairDisplay-Bold.ttf');
 }
-
 .split {
     height: 100%;
     position: fixed;
@@ -10,14 +9,6 @@
     overflow-x: hidden;
     padding-top: 20px;
 }
-
-.upperSize{
-
-}
-.cookie{
-
-}
-
 .left {
     left: 0;
     background-color: white;
@@ -37,8 +28,6 @@
     border-left: 1px solid black;
     width: 35%;
 }
-
-
 
 .centered {
     position: absolute;
