@@ -32,7 +32,7 @@
     <div class="split middle">
       <div class="middleUp">
         <div class="statistics">
-          <p v-for="buildingAmmount in buildingsInfo" >{{buildingAmmount.name}} - {{buildingAmmount.ammount}}</p>
+          <p v-for="buildingAmmount in buildingsInfo" v-bind:id="buildingAmmount.name" >{{buildingAmmount.name}} - {{buildingAmmount.ammount}}</p>
         </div>
       </div>
       <div class="middleDown">
